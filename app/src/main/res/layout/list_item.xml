@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="4dp"
+    app:cardBackgroundColor="?colorControlHighlight">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:layoutDirection="rtl"
+            android:orientation="horizontal">
+
+
+            <!--           <TextView
+                           android:id="@+id/tvNumber_item"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_marginStart="4dp"
+                           android:layout_marginEnd="4dp"
+                           android:gravity="start"
+                           android:lines="1"
+                           android:textSize="14sp"
+                           tools:text="11 - " />-->
+
+            <TextView
+                android:id="@+id/tv_title_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="70"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:lines="1"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:textAppearance="?attr/textAppearanceTitleSmall"
+                android:textColor="?attr/colorControlNormal"
+                android:textDirection="rtl"
+                android:textSize="20sp"
+                tools:text="سوکت شارژ نوکیا 106 " />
+
+
+            <TextView
+                android:id="@+id/tv_income_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:gravity="end"
+                android:lines="1"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:textDirection="rtl"
+                android:textSize="18sp"
+                tools:text="70.000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+
+                android:text="تومان" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_date_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            tools:text="چهارشنبه 28 دی 1400" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

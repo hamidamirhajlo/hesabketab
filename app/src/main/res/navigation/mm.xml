@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mm"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.hamid.learninggauth.view.fragment.MainFragment"
+        android:label="همه کارها"
+        tools:layout="@layout/fragment_main" >
+
+        <action
+            android:id="@+id/go_add"
+            app:destination="@id/updateFragment" />
+        <action
+            android:id="@+id/go_update"
+            app:destination="@id/itemDetailsFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/updateFragment"
+        tools:layout="@layout/fragment_update"
+        android:name="com.hamid.learninggauth.view.fragment.AddItemFragment"
+        android:label="افزودن" />
+
+
+    <fragment
+        android:id="@+id/itemDetailsFragment"
+        android:name="com.hamid.learninggauth.view.fragment.UpdateFragment"
+        tools:layout="@layout/fragment_update"
+        android:label="مشاهده و ویرایش" />
+</navigation>
