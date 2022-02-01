@@ -83,12 +83,12 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
                 R.id.chip_this_year -> {
                     root_select_date.visibility = GONE
-                    viewModel.readThisYear()
+                    //viewModel.readThisYear()
                 }
 
                 R.id.chip_all -> {
                     root_select_date.visibility = GONE
-                    viewModel.readThisMonth()
+                   // viewModel.readThisMonth()
                 }
 
                 R.id.chip_select_date -> {
@@ -162,7 +162,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     }
 
-    @SuppressLint("UseCompatLoadingForDrawables")
+    @SuppressLint("UseCompat ForDrawables")
     private fun checkNightState() {
         if (!preferences.isNight()) {
             toolbar.menu.findItem(R.id.action_main_night).icon =
@@ -176,5 +176,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
         }
     }
+
+
 
 }

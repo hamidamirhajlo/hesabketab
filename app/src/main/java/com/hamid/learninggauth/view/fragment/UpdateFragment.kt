@@ -8,7 +8,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.hamid.learninggauth.R
 import com.hamid.learninggauth.core.data.AppData
-import com.hamid.learninggauth.core.utils.PersianDate
 import com.hamid.learninggauth.viewmodel.AppViewModel
 import kotlinx.android.synthetic.main.fragment_update.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -54,7 +53,9 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
         var cost = "0"
 
         if (edt_title_details.text?.isNotEmpty() == true) {
+
             title = edt_title_details.text.toString()
+
             if (edt_total_details.text?.isNotEmpty() == true) {
                 total = edt_total_details.text.toString()
             }
@@ -63,16 +64,9 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
                 cost = edt_cost_details.text.toString()
             }
 
-            val appData =
-                AppData(
-                    id!!,
-                    title,
-                    total,
-                    cost,
-                    PersianDate().shDay,
-                    PersianDate().shMonth,
-                    PersianDate().shYear
-                )
+            val income = (total.toLong() - cost.toLong()).toString()
+
+            val appData = AppData(id!!, title, total, cost,income,currentItem?.date)
             viewModel.update(appData)
             findNavController().popBackStack()
 

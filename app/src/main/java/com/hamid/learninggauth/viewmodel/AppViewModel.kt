@@ -24,13 +24,5 @@ class AppViewModel(private val repository: Repository) : ViewModel() {
     fun delete(appData: AppData) = viewModelScope.launch(IO) { repository.delete(appData) }
 
     fun getItemById(id: Int): LiveData<AppData> = repository.getItemById(id)
-    fun readThisMonth() {
-
-    }
-
-    fun readThisYear() {
-
-    }
-
 
 }

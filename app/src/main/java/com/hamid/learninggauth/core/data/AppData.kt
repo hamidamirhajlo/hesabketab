@@ -10,7 +10,6 @@ data class AppData(
     val title: String,
     val total: String,
     val cost: String,
-    val day: Int,
-    val month: Int,
-    val year: Int
+    val income: String,
+    val date: Long? = Date().time
 )

@@ -94,7 +94,8 @@ public class PersianDateFormat {
    * @return return date
    */
   public static String format(PersianDate date, String pattern, PersianDateNumberCharacter numberFormatCharacter) {
-    if(pattern == null) pattern="l j F Y H:i:s";
+//    if(pattern == null) pattern="l j F Y H:i:s";
+    if(pattern == null) pattern="l j F Y";
     String[] key = {"a", "l", "j", "F", "Y", "H", "i", "s", "d", "g", "n", "m", "t", "w", "y", "z",
         "A", "L","X","C","E"};
     String year2;

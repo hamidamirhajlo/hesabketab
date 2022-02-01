@@ -9,80 +9,52 @@
     app:cardBackgroundColor="?colorControlHighlight">
 
     <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layoutDirection="rtl"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/tv_title_item"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:layoutDirection="rtl"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:layout_margin="2dp"
+            android:lines="1"
+            android:textSize="22sp"
+            android:fontFamily="@font/irsns_b"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:textColor="#0277BD"
+            android:textDirection="rtl"
+            tools:text="سوکت شارژ نوکیا 106 " />
 
-
-            <!--           <TextView
-                           android:id="@+id/tvNumber_item"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:layout_marginStart="4dp"
-                           android:layout_marginEnd="4dp"
-                           android:gravity="start"
-                           android:lines="1"
-                           android:textSize="14sp"
-                           tools:text="11 - " />-->
-
-            <TextView
-                android:id="@+id/tv_title_item"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
-                android:layout_marginStart="8dp"
-                android:layout_weight="70"
-                android:ellipsize="end"
-                android:gravity="start"
-                android:lines="1"
-                android:marqueeRepeatLimit="marquee_forever"
-                android:textAppearance="?attr/textAppearanceTitleSmall"
-                android:textColor="?attr/colorControlNormal"
-                android:textDirection="rtl"
-                android:textSize="20sp"
-                tools:text="سوکت شارژ نوکیا 106 " />
-
-
-            <TextView
-                android:id="@+id/tv_income_item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
-                android:gravity="end"
-                android:lines="1"
-                android:marqueeRepeatLimit="marquee_forever"
-                android:textDirection="rtl"
-                android:textSize="18sp"
-                tools:text="70.000" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-
-                android:text="تومان" />
-
-
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_income_item"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/irsns_m"
+           android:layout_margin="2dp"
+            android:textAppearance="?attr/textAppearanceTitleLarge"
+            android:textColor="#2E7D32"
+            tools:text="خورده ای تومان" />
 
         <TextView
             android:id="@+id/tv_date_item"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="end"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="-4dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="2dp"
+            android:textSize="12sp"
+            android:textAppearance="?attr/textAppearanceTitleSmall"
+            android:fontFamily="@font/irsns_ul"
             tools:text="چهارشنبه 28 دی 1400" />
+
 
     </LinearLayout>
 
