@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardv_root_getlayout"
     android:layout_width="match_parent"
@@ -12,7 +13,7 @@
         android:layout_height="?attr/actionBarSize">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbarDetails"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:menu="@menu/menu_item_details"
@@ -22,7 +23,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="300dp"
@@ -41,7 +42,8 @@
                     android:id="@+id/edt_title_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="24dp"
+                    android:fontFamily="@font/irsns"
                     android:gravity="center"
                     android:hint="عنوان"
                     android:inputType="text" />
@@ -56,12 +58,10 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_total_details"
+                    style="@style/edt_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
-                    android:gravity="center"
-                    android:hint="مبلغ دریافتی"
-                    android:inputType="phone" />
+                    android:hint="مبلغ دریافتی" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,21 +72,27 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_cost_details"
+                    style="@style/edt_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
-                    android:gravity="center"
-                    android:hint="هزینه پرداختی"
-                    android:inputType="phone" />
+                    android:hint="هزینه پرداختی" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_save_details"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="ذخیره" />
+                android:layout_marginTop="38dp"
+                android:textColor="@color/error"
+                app:icon="@drawable/ic_baseline_delete_24"
+                app:iconTint="@color/error"
+                app:strokeColor="@color/error"
+                style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+                android:fontFamily="@font/irsns_b"
+                android:text="حذف" />
+
         </LinearLayout>
 
     </ScrollView>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

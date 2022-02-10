@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_details_delete"
-        android:icon="@drawable/ic_baseline_delete_24"
-        android:title="حذف"
+        android:id="@+id/action_details_update"
+        android:icon="@drawable/ic_baseline_check_24"
+        android:title="بروزرسانی"
         app:showAsAction="always|collapseActionView" />
 </menu>

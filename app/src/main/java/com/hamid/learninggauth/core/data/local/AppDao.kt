@@ -10,7 +10,7 @@ interface AppDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(appData: AppData)
 
-    @Query("SELECT * FROM appdata")
+    @Query("SELECT * FROM appdata ORDER BY date ASC")
     fun readAll(): LiveData<List<AppData>>
 
     @Query("SELECT * FROM appdata  ")
@@ -25,6 +25,9 @@ interface AppDao {
     @Query("SELECT * FROM appdata WHERE id == :itemId ")
     fun getItemById(itemId: Int): LiveData<AppData>
 
+
+    @Query("SELECT * FROM appdata WHERE date BETWEEN :startDate AND :endDate ORDER BY date ASC")
+    fun filterByDate(startDate: Long, endDate: Long): LiveData<List<AppData>>
 
 //    @Query("SELECT MAX(date) AS maxdate ")
 //    fun greaterYear(): LiveData<Int>

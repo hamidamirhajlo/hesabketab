@@ -14,5 +14,8 @@ class Repository(appDatabase: AppDatabase) {
     fun readAll(): LiveData<List<AppData>> = appDao.readAll()
     suspend fun update(appData: AppData) = appDao.update(appData)
     fun getItemById(id: Int): LiveData<AppData> = appDao.getItemById(id)
+
+    fun filterByDate(startDate: Long, endDate: Long) = appDao.filterByDate(startDate, endDate)
+
 //    fun greaterYear(): Int = appDao.greaterYear()
 }

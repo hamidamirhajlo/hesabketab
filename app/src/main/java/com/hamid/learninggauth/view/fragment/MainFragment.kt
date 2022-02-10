@@ -1,34 +1,50 @@
 package com.hamid.learninggauth.view.fragment
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.view.View.*
-import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.chip.Chip
 import com.hamid.learninggauth.R
 import com.hamid.learninggauth.core.adapter.AppAdapter
+import com.hamid.learninggauth.core.adapter.MyLinearLayoutManager
 import com.hamid.learninggauth.core.data.AppData
 import com.hamid.learninggauth.core.utils.AppPreferences
+import com.hamid.learninggauth.core.utils.DateUtils
+import com.hamid.learninggauth.core.utils.DateUtils.monthLong
+import com.hamid.learninggauth.core.utils.DateUtils.weekStartTime
+import com.hamid.learninggauth.core.utils.DateUtils.yearStartTime
+import com.hamid.learninggauth.core.utils.MyTextUtils
+import com.hamid.learninggauth.core.utils.MyTextUtils.setFarsi
 import com.hamid.learninggauth.core.utils.PersianDate
-import com.hamid.learninggauth.core.utils.PersianDateFormat
 import com.hamid.learninggauth.viewmodel.AppViewModel
+import ir.hamsaa.persiandatepicker.PersianDatePickerDialog
+import ir.hamsaa.persiandatepicker.api.PersianPickerDate
+import ir.hamsaa.persiandatepicker.api.PersianPickerListener
 import kotlinx.android.synthetic.main.fragment_main.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+const val TAG = "MainFragment"
+
 class MainFragment : Fragment(R.layout.fragment_main) {
 
-    private var selectedYear: Int=0
-    private var selectedMonth: Int=0
-    private var selectedDay: Int=0
+    private var from: Long = 0
+    private var until: Long = 0
+    private var isInSelectFromDateDialog: Boolean = true
+    private var picker: PersianDatePickerDialog? = null
+    private var selectedChipText: CharSequence? = ""
+    private var workList = emptyList<AppData>()
+
     private val viewModel: AppViewModel by viewModel()
     private lateinit var adapter: AppAdapter
     private val preferences: AppPreferences by inject()
@@ -36,104 +52,137 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupToolbar()
-        val pDate = PersianDate()
-
-        val pDateFormat = PersianDateFormat.format(
-            pDate,
-            "Y/m/d",
-            PersianDateFormat.PersianDateNumberCharacter.FARSI
-        )
-
-        tv_calender_main.text = pDateFormat.toString()
 
         adapter = AppAdapter()
 
+        val myLinearLayoutManager = MyLinearLayoutManager(requireContext()).apply {
+            reverseLayout = true
+            stackFromEnd = true
+        }
+        recy_items.layoutManager = myLinearLayoutManager
         recy_items.adapter = adapter
 
+        workList = mutableListOf()
 
-        viewModel.readAll().observe(viewLifecycleOwner) {
+        btmnv.setOnItemSelectedListener {
 
-            adapter.submit(it)
-            recy_items.smoothScrollToPosition(it.size)
+            when (it.itemId) {
+                R.id.add_bottom_menu -> {
+                    findNavController().navigate(R.id.go_add)
+                }
 
-        }
+            }
 
-        fab_add_item.setOnClickListener {
-            findNavController().navigate(R.id.go_add)
+            return@setOnItemSelectedListener true
         }
 
         initChips()
     }
 
     private fun initChips() {
-        chip_this_month.isChecked = true
+
+        setDefaultChipItem(chip_this_month)
+
         chip_group.setOnCheckedChangeListener { group, checkedId ->
-            Toast.makeText(requireContext(), checkedId.toString(), Toast.LENGTH_SHORT).show()
+
+            selectedChipText = group.findViewById<Chip>(checkedId).text
+
             when (checkedId) {
-                R.id.chip_this_month -> {
-                    root_select_date.visibility = GONE
-                    adapter.listItem.forEach {
-                        val persianDateFormat = PersianDateFormat(
-                            "m",
-                            PersianDateFormat.PersianDateNumberCharacter.FARSI
-                        )
-                    }
-
-                }
-
-                R.id.chip_this_year -> {
-                    root_select_date.visibility = GONE
-                    //viewModel.readThisYear()
-                }
-
-                R.id.chip_all -> {
-                    root_select_date.visibility = GONE
-                   // viewModel.readThisMonth()
-                }
-
-                R.id.chip_select_date -> {
-                    initACTVs()
-                    root_select_date.visibility = VISIBLE
-                }
+                R.id.chip_this_day -> filterListBy(PersianDate.today().time)
+                R.id.chip_this_week -> filterListBy(weekStartTime)
+                R.id.chip_this_month -> filterListBy(monthLong)
+                R.id.chip_this_year -> filterListBy(yearStartTime)
+                R.id.chip_all -> readAll()
+                R.id.chip_select_date -> showSelectedDateDialog("تایید و ادامه")
             }
+
         }
     }
 
-    private fun initACTVs() {
-        val days = (1..31).toList()
-        val dayAdapter = ArrayAdapter(
-            requireContext(), android.R.layout.simple_expandable_list_item_1,
-            days
-        )
-        actv_day.setAdapter(dayAdapter)
+    private fun showSelectedDateDialog(positiveText: String) {
+//        val modal = DateModalBottomsheet()
+//        modal.show(requireActivity().supportFragmentManager,"modal")
 
-        actv_day.setOnItemClickListener { adapterView, view, i, l ->
-            selectedDay = i+1
+        picker = PersianDatePickerDialog(requireContext())
+            .setPositiveButtonString(positiveText)
+            .setNegativeButton("بیخیال")
+            .setTodayButton("تاریخ امروز")
+            .setTodayButtonVisible(true)
+            .setMinYear(1300)
+            .setMaxYear(PersianDatePickerDialog.THIS_YEAR)
+            .setMaxMonth(PersianDatePickerDialog.THIS_MONTH)
+            .setMaxDay(PersianDatePickerDialog.THIS_DAY)
+            .setInitDate(1400, 3, 13)
+            .setActionTextColor(Color.BLACK)
+            .setTypeFace(ResourcesCompat.getFont(requireContext(), R.font.irsns_m))
+            .setTitleType(PersianDatePickerDialog.WEEKDAY_DAY_MONTH_YEAR)
+            .setShowInBottomSheet(true)
+            .setListener(object : PersianPickerListener {
+                override fun onDateSelected(persianPickerDate: PersianPickerDate) {
+                    Log.d(TAG, "onDateSelected: " + persianPickerDate.timestamp) //675930448000
+
+                    if (isInSelectFromDateDialog) {
+                        from = persianPickerDate.timestamp
+                        selectedChipText = DateUtils.persanDateFormat(PersianDate(from))
+                        showSelectedDateDialog("پایان")
+                    } else {
+                        // show select until date dialog
+                        until = persianPickerDate.timestamp
+                        selectedChipText = if (from == until) {
+                            selectedChipText.toString().plus(" تا پایان روز")
+                        } else {
+                            selectedChipText.toString()
+                                .plus(" تا ${DateUtils.persanDateFormat(PersianDate(until))}")
+                        }
+
+                        filterListBy(from, until + DateUtils.dayMillis)
+                    }
+                    isInSelectFromDateDialog = !isInSelectFromDateDialog
+                }
+
+                override fun onDismissed() {}
+            })
+
+        picker?.show()
+    }
+
+    private fun setDefaultChipItem(chip: Chip) {
+        chip.isChecked = true
+        selectedChipText = chip.text
+        filterListBy(monthLong)
+    }
+
+    private fun readAll() {
+        viewModel.readAll().observe(viewLifecycleOwner) { all ->
+            adapter.submit(all)
+            computeTotalIncome(all)
+        }
+    }
+
+    private fun filterListBy(from: Long, until: Long = System.currentTimeMillis()) {
+        viewModel.filterByDate(from, until)
+            .observe(viewLifecycleOwner) { listItemOfDay ->
+                adapter.submit(listItemOfDay)
+                computeTotalIncome(listItemOfDay)
+            }
+    }
+
+    private fun computeTotalIncome(listItemOfMonth: List<AppData>) {
+        var t = 0
+        listItemOfMonth.forEach {
+            t += it.income.toInt()
         }
 
-        val month = PersianDate.monthNames
-        val monthAdapter = ArrayAdapter(
-            requireContext(), android.R.layout.simple_expandable_list_item_1,
-            month
-        )
+        if (t == 0) {
+            tv_totalIncome_main.text = "بدون درآمد"
+        } else {
 
-        actv_month.setAdapter(monthAdapter)
-//        actv_month.listSelection = month[PersianDate().shMonth]
-        actv_month.setOnItemClickListener { adapterView, view, i, l ->
-            selectedMonth = i+1
+            //totalIncome = t
+            val formattedT = MyTextUtils.formatNumber(t)
+            tv_totalIncome_main.text = " مجموع درآمد ${selectedChipText}: $formattedT تومان "
+            tv_totalIncome_main.setFarsi(true)
         }
 
-        val years = (PersianDate().shYear - 5..PersianDate().shYear).toList()
-
-        val yearAdapter = ArrayAdapter(
-            requireContext(), android.R.layout.simple_expandable_list_item_1,
-            years
-        )
-
-        actv_year.setAdapter(yearAdapter)
-        actv_year.setOnItemClickListener { adapterView, view, i, l ->
-            selectedYear = years[i]
-        }
     }
 
     private fun setupToolbar() {
@@ -160,6 +209,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             return@setOnMenuItemClickListener false
         }
 
+        tv_calender_main.text = DateUtils.persanDateFormat(PersianDate()).toString()
+        tv_calender_main.setFarsi(true)
     }
 
     @SuppressLint("UseCompat ForDrawables")
@@ -176,7 +227,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
         }
     }
-
 
 
 }

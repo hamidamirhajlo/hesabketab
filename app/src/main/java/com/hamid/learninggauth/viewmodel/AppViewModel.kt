@@ -1,16 +1,12 @@
 package com.hamid.learninggauth.viewmodel
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hamid.learninggauth.core.data.repo.Repository
 import com.hamid.learninggauth.core.data.AppData
-import com.hamid.learninggauth.core.utils.AppPreferences
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
-import org.koin.java.KoinJavaComponent.inject
 
 class AppViewModel(private val repository: Repository) : ViewModel() {
 
@@ -24,5 +20,10 @@ class AppViewModel(private val repository: Repository) : ViewModel() {
     fun delete(appData: AppData) = viewModelScope.launch(IO) { repository.delete(appData) }
 
     fun getItemById(id: Int): LiveData<AppData> = repository.getItemById(id)
+
+    fun filterByDate(from: Long, until: Long): LiveData<List<AppData>> {
+        return repository.filterByDate(from, until)
+    }
+
 
 }

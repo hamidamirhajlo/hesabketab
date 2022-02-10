@@ -8,7 +8,6 @@
     android:orientation="vertical"
     tools:context=".view.fragment.MainFragment">
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
@@ -48,7 +47,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,6 +60,7 @@
             android:layout_marginEnd="8dp"
             android:orientation="vertical">
 
+            <!-- filter chips-->
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -71,16 +70,30 @@
                     style="@style/Widget.MaterialComponents.ChipGroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:singleLine="true"
                     app:selectionRequired="true"
+                    app:singleLine="true"
                     app:singleSelection="true">
 
                     <com.google.android.material.chip.Chip
-                        android:enabled="true"
+                        android:id="@+id/chip_this_day"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="امروز" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_this_week"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="هفته جاری" />
+
+                    <com.google.android.material.chip.Chip
                         android:id="@+id/chip_this_month"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        tools:checked="true"
                         android:text="ماه جاری" />
 
                     <com.google.android.material.chip.Chip
@@ -107,91 +120,46 @@
                 </com.google.android.material.chip.ChipGroup>
             </HorizontalScrollView>
 
-
-            <LinearLayout
-                android:id="@+id/root_select_date"
+            <TextView
+                android:id="@+id/tv_totalIncome_main"
+                android:gravity="center_vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:fontFamily="@font/irsns"
+                android:text="مجموع درآمد: "
+                android:layout_height="34dp"/>
+
+            <View
+                android:background="#7f7f7f7f"
                 android:layout_marginBottom="4dp"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                tools:visibility="visible">
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:layout_weight="1"
-                    android:hint="روز">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/actv_day"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="none"
-                        android:lines="1" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:layout_weight="1"
-                    android:hint="ماه">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/actv_month"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="none"
-                        android:lines="1" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="سال">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/actv_year"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="none"
-                        android:lines="1" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
-
-
+            <!-- list item-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recy_items"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingBottom="74dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:reverseLayout="true"
-                app:stackFromEnd="true"
-                tools:itemCount="6"
+                tools:itemCount="5"
                 tools:listitem="@layout/list_item" />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/fab_add_item"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom|end"-->
+<!--        android:layout_margin="16dp"-->
+<!--        android:src="@drawable/ic_baseline_add_24"-->
+<!--        tools:ignore="SpeakableTextPresentCheck" />-->
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_add_item"
-        android:layout_width="wrap_content"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/btmnv"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_baseline_add_24" />
-
+        android:layout_gravity="bottom"
+        app:menu="@menu/main_bottom" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -28,5 +28,18 @@
         <item name="colorSurfaceInverse">@color/md_theme_light_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_light_primaryInverse</item>
         <item name="android:windowTranslucentStatus">true</item>
+        <item name="numberPickerTheme">@style/customNumberPicker</item>
+
+    </style>
+
+    <!-- Here is your custom date picker theme -->
+    <style name="customNumberPicker">
+        <!-- use this for text color -->
+        //<item name="android:textColorPrimary">@color/md_theme_light_primary</item>
+
+        <!-- use this for divider color -->
+        <item name="colorControlNormal">@color/md_theme_light_tertiary</item>
+        <item name="backgroundColor">@color/md_theme_light_surface</item>
+
     </style>
 </resources>
