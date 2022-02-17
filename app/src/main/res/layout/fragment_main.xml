@@ -139,7 +139,7 @@
                 android:id="@+id/recy_items"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingBottom="74dp"
+                android:paddingBottom="84dp"
                 tools:itemCount="5"
                 tools:listitem="@layout/list_item" />
         </LinearLayout>
