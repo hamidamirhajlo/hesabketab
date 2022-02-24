@@ -63,5 +63,8 @@ dependencies {
 //    implementation "io.insert-koin:koin-core:$koin_version"
     implementation "io.insert-koin:koin-android:$koin_version"
 
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+
 }
 

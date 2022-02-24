@@ -14,7 +14,7 @@
         android:title="add"
         app:showAsAction="always" />
     <item
-        android:id="@+id/trending_bottmo_menu"
+        android:id="@+id/trade_bottom_menu"
         android:icon="@drawable/ic_baseline_trending_up_24"
         android:title="trend"
         app:showAsAction="always" />

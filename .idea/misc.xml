@@ -5,7 +5,9 @@
       <map>
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/drawable-v21/app_widget_background.xml" value="0.28177083333333336" />
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.23425925925925925" />
+        <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/drawable/bg_circle.xml" value="0.1685" />
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/drawable/ic_baseline_add_box_24.xml" value="0.173" />
+        <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.1685" />
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.28177083333333336" />
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/drawable/ic_baseline_list_alt_24.xml" value="0.173" />
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/drawable/ic_baseline_trending_up_24.xml" value="0.173" />
@@ -14,21 +16,27 @@
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/drawable/ic_night_yes.xml" value="0.15052083333333333" />
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/layout/bbgb.xml" value="0.1969111969111969" />
+        <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/layout/fields_add.xml" value="0.265625" />
+        <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/layout/fragment_add_2.xml" value="0.33" />
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/layout/fragment_add_item.xml" value="0.19921875" />
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/layout/fragment_authentication.xml" value="0.25" />
+        <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/layout/fragment_contact.xml" value="0.25" />
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/layout/fragment_item_details.xml" value="0.33" />
-        <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/layout/fragment_main.xml" value="0.21" />
+        <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/layout/fragment_main.xml" value="0.1969111969111969" />
+        <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/layout/fragment_trade.xml" value="0.19921875" />
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/layout/fragment_update.xml" value="0.19921875" />
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/layout/get.xml" value="0.25" />
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/layout/layout_choose_data.xml" value="0.22" />
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/layout/list.xml" value="0.265625" />
-        <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/layout/list_item.xml" value="0.33" />
+        <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/layout/list_item.xml" value="0.19921875" />
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/layout/m.xml" value="0.21794871794871795" />
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/layout/new_app_widget.xml" value="0.265625" />
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/layout/widget.xml" value="0.265625" />
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/menu/main_bottom.xml" value="0.19921875" />
+        <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/menu/main_top.xml" value="0.19921875" />
         <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/menu/menu_item_details.xml" value="0.265625" />
-        <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/menu/menu_item_main.xml" value="0.33" />
+        <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/menu/menu_item_main.xml" value="0.25" />
+        <entry key="..\:/Users/hamid/AndroidStudioProjects/LearningGAuth/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.175" />
         <entry key="..\:/Users/hamid/AppData/Local/Android/Sdk/platforms/android-31/data/res/drawable/btn_star.xml" value="0.28177083333333336" />
         <entry key="..\:/Users/hamid/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_list_item_2.xml" value="0.265625" />
       </map>

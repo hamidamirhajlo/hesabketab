@@ -3,8 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_main_night"
-        android:icon="@drawable/ic_night_yes"
-        android:title="حالت شب"
-        app:showAsAction="always" />
+        android:id="@+id/contact_menu"
+        android:icon="@drawable/ic_baseline_contact_phone_24"
+        android:title="تماس با ما"/>
 </menu>

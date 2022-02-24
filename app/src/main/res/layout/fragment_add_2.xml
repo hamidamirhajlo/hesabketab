@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            tools:title="افزودن تعمیر انجام شده" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/app_name"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- title -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_title"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="4dp"
+                android:textColorHint="#7f7f7f7f"
+                android:hint="عنوان را وارد کنید">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/actv_title_add2"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/irsns"
+                    android:maxLength="300"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:textSize="22sp" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- total 1 -->
+            <LinearLayout
+                android:id="@+id/root_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textInputLayout_title"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="4dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/irsns_ul"
+                    android:text="جزئیات مبلغ دریافتی از مشتری بعنوان مثال: دریافتی(100،000 تومان) بابت (تعویض قطعه x) هزینه خرید(50،000) توضیحات (خریداری شده از آقای ...) \nدر صورت تعدد کارهای انجام شده با استفاده از دکمه بعلاوه فیلد جدیدی اضافه کنید."
+                    android:textDirection="rtl"
+                    android:textSize="12sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recy_add2"
+                    android:layout_width="match_parent"
+                    tools:listitem="@layout/fields_add"
+                    tools:itemCount="1"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:layout_height="wrap_content"/>
+
+<!--                <include
+                    android:id="@+id/field1"
+                    layout="@layout/fields_add" />
+
+                <include
+                    android:id="@+id/field2"
+                    layout="@layout/fields_add"
+                    android:visibility="visible" />
+
+                <include
+                    android:id="@+id/field3"
+                    layout="@layout/fields_add"
+                    android:visibility="gone" />
+
+                <include
+                    android:id="@+id/field4"
+                    layout="@layout/fields_add"
+                    android:visibility="gone" />-->
+
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/btn_add_new_total"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="end"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:tint="?colorPrimary"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_baseline_add_circle_24" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="300dp"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/btn_save_add2"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="wrap_content"
+                    android:text="ذخیره"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

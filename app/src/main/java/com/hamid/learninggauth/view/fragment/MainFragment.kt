@@ -5,10 +5,12 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -43,7 +45,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private var isInSelectFromDateDialog: Boolean = true
     private var picker: PersianDatePickerDialog? = null
     private var selectedChipText: CharSequence? = ""
-    private var workList = emptyList<AppData>()
 
     private val viewModel: AppViewModel by viewModel()
     private lateinit var adapter: AppAdapter
@@ -53,6 +54,17 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         super.onViewCreated(view, savedInstanceState)
         setupToolbar()
 
+        setupRecyclerViewItems()
+
+        // initBottomNavigation()
+        fab_add_item.setOnClickListener {
+            findNavController().navigate(R.id.go_add2)
+        }
+
+        initChips()
+    }
+
+    private fun setupRecyclerViewItems() {
         adapter = AppAdapter()
 
         val myLinearLayoutManager = MyLinearLayoutManager(requireContext()).apply {
@@ -61,23 +73,19 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         }
         recy_items.layoutManager = myLinearLayoutManager
         recy_items.adapter = adapter
+    }
 
-        workList = mutableListOf()
-
+/*    private fun initBottomNavigation() {
         btmnv.setOnItemSelectedListener {
 
             when (it.itemId) {
-                R.id.add_bottom_menu -> {
-                    findNavController().navigate(R.id.go_add)
-                }
-
+                R.id.add_bottom_menu -> findNavController().navigate(R.id.go_add)
+                R.id.trade_bottom_menu -> findNavController().navigate(R.id.tradeFragment)
             }
 
             return@setOnItemSelectedListener true
         }
-
-        initChips()
-    }
+    }*/
 
     private fun initChips() {
 
@@ -174,7 +182,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         }
 
         if (t == 0) {
-            tv_totalIncome_main.text = "بدون درآمد"
+            tv_totalIncome_main.text = "برای این تاریخ درآمدی ثبت نشده است."
         } else {
 
             //totalIncome = t
@@ -194,35 +202,42 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
         checkNightState()
 
-        toolbar.setOnMenuItemClickListener { menuItem ->
-
-            if (menuItem.itemId == R.id.action_main_night) {
-
-                if (!preferences.isNight()) {
-                    AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
-                } else {
-                    AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
-                }
-
-                preferences.setNight(!preferences.isNight())
+        switch_night.setOnCheckedChangeListener { switch, b ->
+            if (b) {
+                AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
             }
-            return@setOnMenuItemClickListener false
+            preferences.setNight(!preferences.isNight())
+
         }
 
-        tv_calender_main.text = DateUtils.persanDateFormat(PersianDate()).toString()
-        tv_calender_main.setFarsi(true)
+        toolbar.setOnMenuItemClickListener {
+            if (it.itemId == R.id.contact_menu){
+                findNavController().navigate(R.id.action_mainFragment_to_contactFragment)
+            }
+            return@setOnMenuItemClickListener true
+        }
+
+    }
+
+    private fun nightActionClickListener() {
+        if (!preferences.isNight()) {
+            AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
+        }
+        preferences.setNight(!preferences.isNight())
     }
 
     @SuppressLint("UseCompat ForDrawables")
     private fun checkNightState() {
         if (!preferences.isNight()) {
-            toolbar.menu.findItem(R.id.action_main_night).icon =
-                resources.getDrawable(R.drawable.ic_night_yes)
             AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
+            switch_night.isChecked = false
 
         } else {
-            toolbar.menu.findItem(R.id.action_main_night).icon =
-                resources.getDrawable(R.drawable.ic_night_no)
+            switch_night.isChecked = true
             AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
 
         }

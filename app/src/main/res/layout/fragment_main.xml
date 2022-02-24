@@ -16,32 +16,16 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:menu="@menu/menu_item_main"
-            app:navigationIcon="@drawable/ic_launcher_foreground"
-            app:title="لیست کار ها">
+            app:menu="@menu/main_top"
+            app:title="@string/app_name">
 
-            <RelativeLayout
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_night"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp">
-
-                <TextView
-                    android:id="@+id/tv_today_mani"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="امروز"
-                    android:textColor="?attr/colorControlNormal" />
-
-                <TextView
-                    android:id="@+id/tv_calender_main"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/tv_today_mani"
-                    android:textColor="?attr/colorControlNormal"
-                    tools:text="133.2.2" />
-            </RelativeLayout>
+                android:layout_gravity="end"
+                android:layout_margin="8dp"
+                android:text="حالت شب" />
         </com.google.android.material.appbar.MaterialToolbar>
 
 
@@ -93,8 +77,8 @@
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        tools:checked="true"
-                        android:text="ماه جاری" />
+                        android:text="ماه جاری"
+                        tools:checked="true" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip_this_year"
@@ -122,17 +106,18 @@
 
             <TextView
                 android:id="@+id/tv_totalIncome_main"
-                android:gravity="center_vertical"
                 android:layout_width="match_parent"
+                android:layout_height="34dp"
                 android:fontFamily="@font/irsns"
-                android:text="مجموع درآمد: "
-                android:layout_height="34dp"/>
+                android:gravity="center_vertical"
+                android:text="مجموع درآمد: " />
 
             <View
-                android:background="#7f7f7f7f"
-                android:layout_marginBottom="4dp"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp"
+                android:layout_marginBottom="4dp"
+                android:background="#7f7f7f7f" />
+
 
             <!-- list item-->
             <androidx.recyclerview.widget.RecyclerView
@@ -140,26 +125,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingBottom="84dp"
-                tools:itemCount="5"
+                android:scrollbarSize="2dp"
+                android:scrollbarStyle="insideOverlay"
+                android:scrollbars="vertical"
+                tools:itemCount="15"
                 tools:listitem="@layout/list_item" />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/fab_add_item"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="bottom|end"-->
-<!--        android:layout_margin="16dp"-->
-<!--        android:src="@drawable/ic_baseline_add_24"-->
-<!--        tools:ignore="SpeakableTextPresentCheck" />-->
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/btmnv"
-        android:layout_width="match_parent"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_item"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:menu="@menu/main_bottom" />
+        android:layout_gravity="bottom|start"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_baseline_add_24"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <!--    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/btmnv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:menu="@menu/main_bottom" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

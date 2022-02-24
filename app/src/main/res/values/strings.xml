@@ -1,9 +1,30 @@
 <resources>
-    <string name="app_name">LearningGAuth</string>
+    <string name="app_name">حسابدار تعمیرات</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="example_appwidget_description">ویجت ثبت کار جدید</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">This is an app widget description</string>
+    <string name="phone"><u>09380076057</u></string>
+    <string name="email"><u>hamid.t711@gmail.com</u></string>
+    <string-array name="actv_title_suggestions">
+        <item>تعمیر</item>
+        <item>تعویض سوکت شارژ</item>
+        <item>تعویض ال سی دی</item>
+        <item>شارژ</item>
+        <item>تعویض باتری</item>
+        <item>ریبال هارد و سی پی یو</item>
+        <item>هارد</item>
+        <item>تعویض</item>
+        <item>آی سی</item>
+        <item>تغذیه</item>
+        <item>تاچ</item>
+        <item>میکروفون</item>
+        <item>آر اف</item>
+        <item>فلت</item>
+        <item>گلس</item>
+        <item>دوربین</item>
+        <item>سی پی یو</item>
+    </string-array>
 </resources>

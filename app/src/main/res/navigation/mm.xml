@@ -8,28 +8,43 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.hamid.learninggauth.view.fragment.MainFragment"
-        android:label="همه کارها"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_main" >
 
         <action
-            android:id="@+id/go_add"
-            app:destination="@id/addItemFragment" />
-        <action
             android:id="@+id/go_update"
             app:destination="@id/itemDetailsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_tradeFragment"
+            app:destination="@id/tradeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_contactFragment"
+            app:destination="@id/contactFragment" />
+        <action
+            android:id="@+id/go_add2"
+            app:destination="@id/addFragment2" />
 
     </fragment>
-
-    <fragment
-        android:id="@+id/addItemFragment"
-        tools:layout="@layout/fragment_add_item"
-        android:name="com.hamid.learninggauth.view.fragment.AddItemFragment"
-        android:label="افزودن" />
-
 
     <fragment
         android:id="@+id/itemDetailsFragment"
         android:name="com.hamid.learninggauth.view.fragment.UpdateFragment"
         tools:layout="@layout/fragment_update"
         android:label="مشاهده و ویرایش" />
+    <fragment
+        android:id="@+id/tradeFragment"
+        android:name="com.hamid.learninggauth.view.fragment.TradeFragment"
+        android:label="fragment_trade"
+        tools:layout="@layout/fragment_trade" />
+    <fragment
+        android:id="@+id/contactFragment"
+        tools:layout="@layout/fragment_contact"
+        android:name="com.hamid.learninggauth.view.fragment.ContactFragment"
+        android:label="ContactFragment" />
+    <fragment
+        android:id="@+id/addFragment2"
+        tools:layout="@layout/fragment_add_2"
+
+        android:name="com.hamid.learninggauth.view.fragment.AddFragment2"
+        android:label="افزودن" />
 </navigation>
