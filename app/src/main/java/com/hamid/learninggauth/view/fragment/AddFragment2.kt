@@ -11,11 +11,14 @@ import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.hamid.learninggauth.R
 import com.hamid.learninggauth.core.adapter.FieldsAdapter
 import com.hamid.learninggauth.core.data.FieldsData
+import com.hamid.learninggauth.viewmodel.AppViewModel
 import kotlinx.android.synthetic.main.fragment_add_2.*
 import kotlinx.android.synthetic.main.fragment_add_2.toolbar
 import kotlinx.android.synthetic.main.fragment_add_item.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddFragment2 : Fragment(R.layout.fragment_add_2) {
+    private val viewModel: AppViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,6 +53,9 @@ class AddFragment2 : Fragment(R.layout.fragment_add_2) {
             itemList.add(emptyFields)
             fieldAdapter.submit(itemList)
             recy_add2.smoothScrollToPosition(itemList.size)
+
+//            viewModel.insert(appData)
+            findNavController().popBackStack()
         }
 
     }

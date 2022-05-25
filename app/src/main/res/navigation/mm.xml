@@ -47,4 +47,9 @@
 
         android:name="com.hamid.learninggauth.view.fragment.AddFragment2"
         android:label="افزودن" />
+    <fragment
+        android:id="@+id/nerkhFragment"
+        tools:layout="@layout/fragment_nerkh"
+        android:name="com.hamid.learninggauth.view.fragment.NerkhFragment"
+        android:label="NerkhFragment" />
 </navigation>

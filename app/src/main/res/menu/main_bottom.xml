@@ -3,19 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/list_bottom_menu"
+        android:id="@+id/nerkhFragment"
         android:icon="@drawable/ic_baseline_list_alt_24"
-        android:title="list"
+        android:title="کارها"
         android:enabled="true"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/add_bottom_menu"
         android:icon="@drawable/ic_baseline_add_box_24"
-        android:title="add"
+        android:title="ثبت تعمیر"
         app:showAsAction="always" />
     <item
-        android:id="@+id/trade_bottom_menu"
+        android:id="@+id/mainFragment"
         android:icon="@drawable/ic_baseline_trending_up_24"
-        android:title="trend"
+        android:title="نرخنامه"
         app:showAsAction="always" />
 </menu>
