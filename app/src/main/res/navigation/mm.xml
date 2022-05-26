@@ -22,10 +22,9 @@
             app:destination="@id/contactFragment" />
         <action
             android:id="@+id/go_add2"
-            app:destination="@id/addFragment2" />
+            app:destination="@id/addFragment" />
 
     </fragment>
-
     <fragment
         android:id="@+id/itemDetailsFragment"
         android:name="com.hamid.learninggauth.view.fragment.UpdateFragment"
@@ -42,10 +41,10 @@
         android:name="com.hamid.learninggauth.view.fragment.ContactFragment"
         android:label="ContactFragment" />
     <fragment
-        android:id="@+id/addFragment2"
-        tools:layout="@layout/fragment_add_2"
+        android:id="@+id/addFragment"
+        tools:layout="@layout/fragment_add"
 
-        android:name="com.hamid.learninggauth.view.fragment.AddFragment2"
+        android:name="com.hamid.learninggauth.view.fragment.AddFragment"
         android:label="افزودن" />
     <fragment
         android:id="@+id/nerkhFragment"

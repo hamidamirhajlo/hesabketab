@@ -1,6 +1,6 @@
 package com.hamid.learninggauth.core.data
 
-data class FieldsData(
+data class Field(
     var id:Int,
     var total: String,
     var forr: String,

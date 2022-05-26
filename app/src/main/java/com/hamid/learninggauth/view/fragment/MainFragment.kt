@@ -52,15 +52,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setupToolbar()
-
         setupRecyclerViewItems()
-
-        // initBottomNavigation()
-        fab_add_item.setOnClickListener {
-            findNavController().navigate(R.id.go_add2)
-        }
-
         initChips()
     }
 

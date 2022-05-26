@@ -134,15 +134,6 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_add_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_baseline_add_24"
-        tools:ignore="SpeakableTextPresentCheck" />
-
     <!--    <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/btmnv"
             android:layout_width="match_parent"
