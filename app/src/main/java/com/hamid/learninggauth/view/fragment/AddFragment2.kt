@@ -7,14 +7,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.hamid.learninggauth.R
 import com.hamid.learninggauth.core.adapter.FieldsAdapter
+import com.hamid.learninggauth.core.adapter.FieldsViewHolder
+import com.hamid.learninggauth.core.data.AppData
 import com.hamid.learninggauth.core.data.FieldsData
 import com.hamid.learninggauth.viewmodel.AppViewModel
+import kotlinx.android.synthetic.main.fields_add.view.*
 import kotlinx.android.synthetic.main.fragment_add_2.*
-import kotlinx.android.synthetic.main.fragment_add_2.toolbar
-import kotlinx.android.synthetic.main.fragment_add_item.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddFragment2 : Fragment(R.layout.fragment_add_2) {
@@ -33,12 +33,12 @@ class AddFragment2 : Fragment(R.layout.fragment_add_2) {
 
         recy_add2.apply {
             adapter = fieldAdapter
-            addItemDecoration(
+/*            addItemDecoration(
                 MaterialDividerItemDecoration(
                     requireContext(),
                     MaterialDividerItemDecoration.VERTICAL
                 )
-            )
+            )*/
 
         }
         val emptyFields = FieldsData(0, "", "", "", "")
@@ -54,8 +54,63 @@ class AddFragment2 : Fragment(R.layout.fragment_add_2) {
             fieldAdapter.submit(itemList)
             recy_add2.smoothScrollToPosition(itemList.size)
 
-//            viewModel.insert(appData)
-            findNavController().popBackStack()
+        }
+        /*
+        * save list to db
+        * go back to main fragment
+        * */
+        btn_save_add2.setOnClickListener {
+            if (actv_title_add2.text.isNotEmpty()) {
+                val title = actv_title_add2.text.toString()
+                var total = 0
+                var cost = 0
+                var income = 0
+                var forr = ""
+                var comment = ""
+
+                fieldAdapter.listItem.forEachIndexed { index, fieldsData ->
+
+                    val vh = recy_add2.findViewHolderForLayoutPosition(index) as FieldsViewHolder
+
+                    with(vh.itemView) {
+
+                        if (edt_total_add2.text?.isNotEmpty() == true) {
+                            total += edt_total_add2.text.toString().toInt()
+                        }
+
+                        if (edt_cost_add2.text?.isNotEmpty() == true) {
+                            cost += edt_cost_add2.text.toString().toInt()
+                        }
+
+                        if (edt_for_add2.text?.isNotEmpty() == true) {
+                            forr = edt_for_add2.text.toString()
+                        }
+
+                        if (edt_comment_add2.text?.isNotEmpty() == true) {
+                            comment = edt_comment_add2.text.toString()
+                        }
+                    }
+                }
+
+                income = total - cost
+
+                val appData =
+                    AppData(
+                        0,
+                        title,
+                        total.toString(),
+                        cost.toString(),
+                        income.toString(),
+                        forr,
+                        comment
+                    )
+
+                println(appData)
+            } else {
+                actv_title_add2.error = "عنوان نمی تواند خالی باشد"
+            }
+
+
         }
 
     }

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.hamid.learninggauth.R
 import com.hamid.learninggauth.core.data.FieldsData
@@ -13,7 +14,10 @@ import kotlinx.android.synthetic.main.fields_add.view.*
 
 class FieldsAdapter : RecyclerView.Adapter<FieldsViewHolder>() {
 
-    private var listItem = mutableListOf<FieldsData>()
+    private var cost: Int = 0
+    private var total: Int = 0
+    private var income: Int = 0
+    var listItem = mutableListOf<FieldsData>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FieldsViewHolder {
         return FieldsViewHolder.by(parent)
     }
@@ -22,10 +26,15 @@ class FieldsAdapter : RecyclerView.Adapter<FieldsViewHolder>() {
 
         holder.bind(listItem[position])
 
-        with(holder.itemView){
+        with(holder.itemView) {
 
             btn_remove_new_total.setOnClickListener {
                 removeItem(position)
+            }
+
+            edt_total_add2.addTextChangedListener {
+
+                cost
             }
         }
     }
@@ -38,10 +47,11 @@ class FieldsAdapter : RecyclerView.Adapter<FieldsViewHolder>() {
         notifyItemInserted(listItem.size - 1)
     }
 
-    private fun removeItem(index:Int) {
+    private fun removeItem(index: Int) {
         listItem.removeAt(index)
         notifyItemRemoved(listItem.size)
     }
+
 }
 
 class FieldsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -56,10 +66,11 @@ class FieldsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
                 tv_num_add2.text = "${layoutPosition + 1}"
                 item.id = layoutPosition
-                item.total = edt_total_add2.text.toString()
                 item.forr = edt_for_add2.text.toString()
+                item.total = edt_total_add2.text.toString()
                 item.cost = edt_cost_add2.text.toString()
                 item.comment = edt_comment_add2.text.toString()
+
             } catch (e: Exception) {
                 Toast.makeText(this.context, "لطفا ورودی ها را کنترل کنید.", Toast.LENGTH_SHORT)
                     .show()

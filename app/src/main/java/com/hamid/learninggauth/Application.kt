@@ -19,7 +19,7 @@ class Application : Application() {
 
         val appModule = module {
             factory { AppDatabase.getInstance(this@Application) }
-            factory { Repository(get()) }
+            factory { Repository(get(),this@Application) }
             viewModel { AppViewModel(get()) }
             single { AppPreferences(this@Application) }
         }

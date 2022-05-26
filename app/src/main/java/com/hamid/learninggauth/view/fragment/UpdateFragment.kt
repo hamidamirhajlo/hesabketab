@@ -69,7 +69,7 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
 
             val income = (total.toLong() - cost.toLong()).toString()
 
-            val appData = AppData(id!!, title, total, cost, income, currentItem?.date)
+            val appData = AppData(id!!, title, total, cost, income, "","",currentItem?.date)
             viewModel.update(appData)
             findNavController().popBackStack()
 

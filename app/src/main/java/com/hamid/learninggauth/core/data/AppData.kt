@@ -11,5 +11,7 @@ data class AppData(
     val total: String,
     val cost: String,
     val income: String,
+    val forr: String? = "",
+    val comment: String? = "",
     val date: Long? = Date().time
 )
