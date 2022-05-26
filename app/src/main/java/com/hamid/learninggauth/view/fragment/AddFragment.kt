@@ -10,7 +10,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.hamid.learninggauth.R
 import com.hamid.learninggauth.core.adapter.FieldsAdapter
 import com.hamid.learninggauth.core.adapter.FieldsViewHolder
-import com.hamid.learninggauth.core.data.AppData
+import com.hamid.learninggauth.core.data.Item
 import com.hamid.learninggauth.core.data.Field
 import com.hamid.learninggauth.viewmodel.AppViewModel
 import kotlinx.android.synthetic.main.item_fields.view.*
@@ -91,7 +91,7 @@ class AddFragment : Fragment(R.layout.fragment_add) {
             val income: Int = total - cost
 
             val appData =
-                AppData(
+                Item(
                     0,
                     title,
                     total.toString(),

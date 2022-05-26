@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import java.util.*
 
 @Entity
-data class AppData(
+data class Item(
     @PrimaryKey(autoGenerate = true) val id: Int,
     val title: String,
     val total: String,

@@ -5,21 +5,19 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.chip.Chip
 import com.hamid.learninggauth.R
-import com.hamid.learninggauth.core.adapter.AppAdapter
+import com.hamid.learninggauth.core.adapter.ItemAdapter
 import com.hamid.learninggauth.core.adapter.MyLinearLayoutManager
-import com.hamid.learninggauth.core.data.AppData
+import com.hamid.learninggauth.core.data.Item
 import com.hamid.learninggauth.core.utils.AppPreferences
 import com.hamid.learninggauth.core.utils.DateUtils
 import com.hamid.learninggauth.core.utils.DateUtils.monthLong
@@ -47,7 +45,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private var selectedChipText: CharSequence? = ""
 
     private val viewModel: AppViewModel by viewModel()
-    private lateinit var adapter: AppAdapter
+    private lateinit var adapter: ItemAdapter
     private val preferences: AppPreferences by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -59,7 +57,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun setupRecyclerViewItems() {
-        adapter = AppAdapter()
+        adapter = ItemAdapter()
 
         val myLinearLayoutManager = MyLinearLayoutManager(requireContext()).apply {
             reverseLayout = true
@@ -169,7 +167,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             }
     }
 
-    private fun computeTotalIncome(listItemOfMonth: List<AppData>) {
+    private fun computeTotalIncome(listItemOfMonth: List<Item>) {
         var t = 0
         listItemOfMonth.forEach {
             t += it.income.toInt()

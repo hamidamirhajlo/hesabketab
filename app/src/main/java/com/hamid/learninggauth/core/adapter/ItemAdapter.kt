@@ -7,21 +7,21 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.hamid.learninggauth.R
-import com.hamid.learninggauth.core.data.AppData
+import com.hamid.learninggauth.core.data.Item
 import com.hamid.learninggauth.core.utils.MyTextUtils.formatNumber
 import com.hamid.learninggauth.core.utils.MyTextUtils.setFarsi
 import com.hamid.learninggauth.core.utils.PersianDate
 import kotlinx.android.synthetic.main.list_item.view.*
 const val GOL_PRICE = 500000
-class AppAdapter() : RecyclerView.Adapter<AppVH>() {
+class ItemAdapter : RecyclerView.Adapter<ItemVH>() {
 
-    var listItem = emptyList<AppData>()
+    var listItem = emptyList<Item>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppVH {
-        return AppVH.by(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemVH {
+        return ItemVH.by(parent)
     }
 
-    override fun onBindViewHolder(holder: AppVH, position: Int) {
+    override fun onBindViewHolder(holder: ItemVH, position: Int) {
         val currentItem = listItem[position]
         with(holder.itemView) {
 
@@ -54,7 +54,7 @@ class AppAdapter() : RecyclerView.Adapter<AppVH>() {
 
     override fun getItemCount() = listItem.size
 
-    fun submit(list: List<AppData>) {
+    fun submit(list: List<Item>) {
         listItem = list
         println("AppAdapter.submit size:${list.size}")
         notifyDataSetChanged()
@@ -62,11 +62,11 @@ class AppAdapter() : RecyclerView.Adapter<AppVH>() {
 
 }
 
-class AppVH(view: View) : RecyclerView.ViewHolder(view) {
+class ItemVH(view: View) : RecyclerView.ViewHolder(view) {
 
     companion object {
-        fun by(parent: ViewGroup): AppVH {
-            return AppVH(
+        fun by(parent: ViewGroup): ItemVH {
+            return ItemVH(
                 LayoutInflater.from(parent.context).inflate(
                     R.layout.list_item, parent, false
                 )

@@ -9,7 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.hamid.learninggauth.R
-import com.hamid.learninggauth.core.data.AppData
+import com.hamid.learninggauth.core.data.Item
 import com.hamid.learninggauth.core.utils.MyTextUtils.convertToEnglish
 import com.hamid.learninggauth.core.utils.MyTextUtils.setFarsi
 import com.hamid.learninggauth.viewmodel.AppViewModel
@@ -20,7 +20,7 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
 
     private val viewModel: AppViewModel by viewModel()
     private var id: Int? = null
-    private var currentItem: AppData? = null
+    private var currentItem: Item? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,7 +69,7 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
 
             val income = (total.toLong() - cost.toLong()).toString()
 
-            val appData = AppData(id!!, title, total, cost, income, "","",currentItem?.date)
+            val appData = Item(id!!, title, total, cost, income, "","",currentItem?.date)
             viewModel.update(appData)
             findNavController().popBackStack()
 
@@ -78,7 +78,7 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
         }
     }
 
-    private fun extractItemToViews(item: AppData) {
+    private fun extractItemToViews(item: Item) {
         edt_total_details.setFarsi()
         edt_cost_details.setFarsi()
 
