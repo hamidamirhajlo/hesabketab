@@ -28,7 +28,7 @@ object MyTextUtils {
         arrayOf("9", "۹")
     )
 
-    fun convertToFarsi(input: String): String {
+    private fun convertToFarsi(input: String): String {
         var faNumbers = input
 
         for (num in mChars) {

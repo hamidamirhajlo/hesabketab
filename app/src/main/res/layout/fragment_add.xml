@@ -20,59 +20,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
-    <LinearLayout
-        android:padding="8dp"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <!-- title -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout_title"
-            style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="4dp"
-            android:hint="عنوان را وارد کنید"
-            android:textColorHint="#7f7f7f7f">
-
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/actv_title_add"
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:background="@android:color/transparent"
-                android:elegantTextHeight="true"
-                android:fontFamily="@font/irsns"
-                android:maxLength="300"
-                android:maxLines="1"
-                android:padding="8dp"
-                android:textSize="20sp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- comment -->
-        <TextView
-            android:id="@+id/tv_comment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:fontFamily="@font/irsns_ul"
-            android:text="جزئیات مبلغ دریافتی از مشتری بعنوان مثال: دریافتی(100،000 تومان) بابت (تعویض قطعه x) هزینه خرید(50،000) توضیحات (خریداری شده از آقای ...) \nدر صورت تعدد کارهای انجام شده با استفاده از دکمه بعلاوه فیلد جدیدی اضافه کنید."
-            android:textDirection="rtl"
-            android:textSize="12sp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recy_add"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="2"
-            tools:listitem="@layout/item_fields" />
-
-    </LinearLayout>
+    <include layout="@layout/layout_inputs"/>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -22,69 +22,10 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
     private var id: Int? = null
     private var currentItem: Item? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            if (it.containsKey("id")) {
-                id = it.getInt("id")
-            }
-        }
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupToolbar()
-
-        id?.let {
-            viewModel.getItemById(id!!).observe(viewLifecycleOwner) { item ->
-                currentItem = item
-                extractItemToViews(currentItem!!)
-            }
-        }
-
-        btn_save_details.setOnClickListener {
-            deleteItem()
-        }
-
-    }
-
-    private fun updateItem() {
-        edt_total_details.setFarsi()
-        edt_cost_details.setFarsi()
-        val title: String
-        var total = "0"
-        var cost = "0"
-
-        if (edt_title_details.text?.isNotEmpty() == true) {
-
-            title = edt_title_details.text.toString()
-
-            if (edt_total_details.text?.isNotEmpty() == true) {
-                total =  convertToEnglish(edt_total_details.text.toString())
-            }
-
-            if (edt_cost_details.text?.isNotEmpty() == true) {
-                cost = convertToEnglish(edt_cost_details.text.toString())
-            }
-
-            val income = (total.toLong() - cost.toLong()).toString()
-
-            val appData = Item(id!!, title, total, cost, income, "","",currentItem?.date)
-            viewModel.update(appData)
-            findNavController().popBackStack()
-
-        } else {
-            edt_title_details.error = "لطفا یک عنوان وارد کنید"
-        }
-    }
-
-    private fun extractItemToViews(item: Item) {
-        edt_total_details.setFarsi()
-        edt_cost_details.setFarsi()
-
-        edt_title_details.setText(item.title)
-        edt_total_details.setText(item.total)
-        edt_cost_details.setText(item.cost)
 
     }
 
@@ -94,12 +35,7 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
         )
 
         toolbar.setOnMenuItemClickListener { item ->
-            if (item.itemId == R.id.action_details_update) {
-                if (currentItem != null) {
-                    updateItem()
-                }
 
-            }
 
             return@setOnMenuItemClickListener true
         }
