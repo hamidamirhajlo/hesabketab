@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -21,7 +20,7 @@
         android:textColorHint="#7f7f7f7f">
 
         <com.google.android.material.textfield.MaterialAutoCompleteTextView
-            android:id="@+id/actv_title_add"
+            android:id="@+id/actv_title_inputs"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:background="@android:color/transparent"
@@ -46,7 +45,7 @@
         android:textSize="12sp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recy_add"
+        android:id="@+id/recyclerview_inputs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

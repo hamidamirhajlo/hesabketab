@@ -7,14 +7,18 @@ import com.hamid.learninggauth.core.data.local.AppDao
 import com.hamid.learninggauth.core.data.local.AppDatabase
 import org.json.JSONObject
 
-class Repository(appDatabase: AppDatabase,private val app:Application) {
+class Repository(appDatabase: AppDatabase, private val app: Application) {
 
     private val appDao: AppDao = appDatabase.dao()
 
     suspend fun insert(item: Item) = appDao.insert(item)
-    suspend fun delete(item: Item) = appDao.delete(item)
+    suspend fun delete(itemId: Int) = appDao.delete(itemId)
     fun readAll(): LiveData<List<Item>> = appDao.readAll()
-    suspend fun update(item: Item) = appDao.update(item)
+
+    //    suspend fun update(item: Item) = appDao.update(item)
+    suspend fun update(item: Item) =
+        appDao.update(item.title, item.total, item.cost, item.income, item.forr!!, item.comment!!)
+
     fun getItemById(id: Int): LiveData<Item> = appDao.getItemById(id)
 
     fun filterByDate(startDate: Long, endDate: Long) = appDao.filterByDate(startDate, endDate)

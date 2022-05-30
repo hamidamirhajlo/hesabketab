@@ -32,11 +32,6 @@ class ItemAdapter : RecyclerView.Adapter<ItemVH>() {
                 tv_income_item.text = tv_income_item.text.toString().plus("\uD83C\uDF39")
             }
 
-            // red color for bad works
-//            if (currentItem.income.toInt() <= 0){
-//                tv_income_item.setTextColor(resources.getColor(R.color.error))
-//            }
-
             tv_income_item.setFarsi(true)
             tv_date_item.text = convertDate(currentItem.date)
             tv_date_item.setFarsi(true)
@@ -56,7 +51,6 @@ class ItemAdapter : RecyclerView.Adapter<ItemVH>() {
 
     fun submit(list: List<Item>) {
         listItem = list
-        println("AppAdapter.submit size:${list.size}")
         notifyDataSetChanged()
     }
 

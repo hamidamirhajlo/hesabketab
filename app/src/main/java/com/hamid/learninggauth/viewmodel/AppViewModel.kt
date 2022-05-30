@@ -17,7 +17,7 @@ class AppViewModel(private val repository: Repository) : ViewModel() {
 
     fun update(item: Item) = viewModelScope.launch(IO) { repository.update(item) }
 
-    fun delete(item: Item) = viewModelScope.launch(IO) { repository.delete(item) }
+    fun delete(itemId: Int) = viewModelScope.launch(IO) { repository.delete(itemId) }
 
     fun getItemById(id: Int): LiveData<Item> = repository.getItemById(id)
 

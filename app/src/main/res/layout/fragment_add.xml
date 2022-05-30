@@ -20,7 +20,14 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
-    <include layout="@layout/layout_inputs"/>
+    <ScrollView
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/layout_inputs" />
+
+    </ScrollView>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

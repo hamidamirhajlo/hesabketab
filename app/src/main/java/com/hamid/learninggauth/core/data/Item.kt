@@ -6,12 +6,12 @@ import java.util.*
 
 @Entity
 data class Item(
-    @PrimaryKey(autoGenerate = true) val id: Int,
-    val title: String,
-    val total: String,
-    val cost: String,
-    val income: String,
-    val forr: String? = "",
-    val comment: String? = "",
-    val date: Long? = Date().time
+    @PrimaryKey(autoGenerate = true) var id: Int,
+    var title: String,
+    var total: String,
+    var cost: String,
+    var income: String,
+    var forr: String? = "",
+    var comment: String? = "",
+    var date: Long? = Date().time
 )

@@ -19,8 +19,18 @@ interface AppDao {
     @Update
     suspend fun update(item: Item)
 
-    @Delete
-    suspend fun delete(item: Item)
+    @Query("update item set title=:title , total=:total , cost=:cost , income=:income , forr=:forr,comment=:comment ")
+    suspend fun update(
+        title: String,
+        total: String,
+        cost: String,
+        income: String,
+        forr: String,
+        comment: String
+    )
+
+    @Query("delete from item where id == :itemId ")
+    suspend fun delete(itemId: Int)
 
     @Query("SELECT * FROM item WHERE id == :itemId ")
     fun getItemById(itemId: Int): LiveData<Item>

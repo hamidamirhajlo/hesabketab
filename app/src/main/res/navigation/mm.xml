@@ -13,7 +13,7 @@
 
         <action
             android:id="@+id/go_update"
-            app:destination="@id/itemDetailsFragment" />
+            app:destination="@id/updateFragment" />
         <action
             android:id="@+id/action_mainFragment_to_tradeFragment"
             app:destination="@id/tradeFragment" />
@@ -26,10 +26,14 @@
 
     </fragment>
     <fragment
-        android:id="@+id/itemDetailsFragment"
+        android:id="@+id/updateFragment"
         android:name="com.hamid.learninggauth.view.fragment.UpdateFragment"
         tools:layout="@layout/fragment_update"
-        android:label="مشاهده و ویرایش" />
+        android:label="مشاهده و ویرایش" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/tradeFragment"
         android:name="com.hamid.learninggauth.view.fragment.TradeFragment"

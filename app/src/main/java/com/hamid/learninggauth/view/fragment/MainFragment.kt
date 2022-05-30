@@ -67,17 +67,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         recy_items.adapter = adapter
     }
 
-/*    private fun initBottomNavigation() {
-        btmnv.setOnItemSelectedListener {
-
-            when (it.itemId) {
-                R.id.add_bottom_menu -> findNavController().navigate(R.id.go_add)
-                R.id.trade_bottom_menu -> findNavController().navigate(R.id.tradeFragment)
-            }
-
-            return@setOnItemSelectedListener true
-        }
-    }*/
 
     private fun initChips() {
 
@@ -100,9 +89,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun showSelectedDateDialog(positiveText: String) {
-//        val modal = DateModalBottomsheet()
-//        modal.show(requireActivity().supportFragmentManager,"modal")
-
         picker = PersianDatePickerDialog(requireContext())
             .setPositiveButtonString(positiveText)
             .setNegativeButton("بیخیال")
@@ -211,15 +197,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             return@setOnMenuItemClickListener true
         }
 
-    }
-
-    private fun nightActionClickListener() {
-        if (!preferences.isNight()) {
-            AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
-        } else {
-            AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
-        }
-        preferences.setNight(!preferences.isNight())
     }
 
     @SuppressLint("UseCompat ForDrawables")
