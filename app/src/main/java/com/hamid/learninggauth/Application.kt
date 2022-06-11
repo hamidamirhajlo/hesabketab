@@ -1,12 +1,12 @@
 package com.hamid.learninggauth
 
 import android.app.Application
-import androidx.appcompat.app.AppCompatDelegate
 import com.hamid.learninggauth.core.data.local.AppDatabase
 import com.hamid.learninggauth.core.data.repo.Repository
 import com.hamid.learninggauth.core.utils.AppPreferences
 import com.hamid.learninggauth.viewmodel.AppViewModel
-import kotlinx.android.synthetic.main.fragment_main.*
+import com.najva.sdk.NajvaClient
+import com.najva.sdk.NajvaConfiguration
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
@@ -19,7 +19,7 @@ class Application : Application() {
 
         val appModule = module {
             factory { AppDatabase.getInstance(this@Application) }
-            factory { Repository(get(),this@Application) }
+            factory { Repository(get(), this@Application) }
             viewModel { AppViewModel(get()) }
             single { AppPreferences(this@Application) }
         }
@@ -30,7 +30,15 @@ class Application : Application() {
         }
 
 
+        // najva config
+        val config = NajvaConfiguration()
+        registerActivityLifecycleCallbacks(NajvaClient.getInstance(this, config))
 
+    }
 
+    override fun onTerminate() {
+        super.onTerminate()
+
+        NajvaClient.getInstance().onAppTerminated()
     }
 }

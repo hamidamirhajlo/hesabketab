@@ -12,6 +12,7 @@
         android:name=".Application"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
+
         <receiver
             android:name=".view.custom.NewAppWidget"
             android:exported="true" >
@@ -33,6 +34,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.najva.sdk.metadata.API_KEY"
+            android:value="458c49d0-5f65-41e1-9adb-e82e5b057f6b" />
+        <meta-data
+            android:name="com.najva.sdk.metadata.WEBSITE_ID"
+            android:value="39027" />
+
     </application>
 
 </manifest>
